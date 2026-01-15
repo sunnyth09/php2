@@ -15,11 +15,11 @@ class Router
 
         $segments = $path === '' ? [] : explode('/', $path);
         $controllerName = ucfirst($segments[0] ?? 'home') . 'Controller';
-        var_dump($controllerName);
+        var_dump("controller" . $controllerName);
         $action = $segments[1] ?? 'index';
-        var_dump($action);
+        var_dump("action" . $action);
         $params = array_slice($segments, 2);
-
+        var_dump("params" . $params);
         if (!class_exists($controllerName)) {
             $this->notFound("class not exist");
             return;

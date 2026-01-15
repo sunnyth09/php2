@@ -8,7 +8,7 @@
              
          <div>
             <h3><?=  $product['name']; ?></h3>
-            <h3><?=  $product['price']; ?></h3>
+            <h3><?=  $product['price    ']; ?></h3>
          </div>
         <?php endforeach ;?>
    </body>

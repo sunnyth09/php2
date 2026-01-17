@@ -1,4 +1,4 @@
 teach
 /vendor/
-vendor
+app/vendor
 .env

@@ -1,8 +1,8 @@
 <?php 
     return [
-        'host' => '127.0.0.1',
-        'database' => 'php2',
-        'username' => 'root',
-        'password' => ''
+        'host' => $_ENV['HOST'] ?: '127.0.0.1',
+        'database' => $_ENV['DATABASE'] ?: 'php2',
+        'username' => $_ENV['USERNAME'] ?: 'root',
+        'password' => $_ENV['PASSWORD'] ?: ''
     ]
 ?>

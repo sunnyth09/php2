@@ -7,7 +7,6 @@ class danhmuccontroller extends Controller
         $danhmuc = $this->model('danhmuc'); //
         // $product = new Product();
         $data = $danhmuc->all();
-        var_dump($data);
         $title = "trang chu";
         $this->view("danhmuc/index", [
             'title' => $title,

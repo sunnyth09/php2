@@ -9,6 +9,7 @@ class danhmuccontroller extends Controller
             return $this->redirect('user/login');
         }
     }
+    
     public function index()
     {
         $danhmuc = $this->model('danhmuc'); //

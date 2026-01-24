@@ -4,7 +4,7 @@ class Router
     public function dispatch(string $uri): void
     {
         var_dump($uri);
-
+        
         $path = parse_url($uri, PHP_URL_PATH) ?? '';
         $path = trim($path, '/');
 

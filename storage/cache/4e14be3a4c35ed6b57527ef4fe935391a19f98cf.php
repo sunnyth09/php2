@@ -21,6 +21,7 @@
             <?php echo $__env->make('layouts.includes.slidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <!-- Products -->
             <section class="col-12 col-lg-9">
+                <?php echo $__env->make('layouts.includes.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <?php echo $__env->yieldContent('content'); ?>
             </section>
 

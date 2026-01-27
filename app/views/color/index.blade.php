@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('title', $title)
 @section('content')
-    <a href="/color/create" class="btn btn-sm btn-light border text-succes">Add Size</a>
+    <a href="/color/create" class="btn btn-primary">Add Size</a>
     <table class="table">
         <tr>
             <th> id </th>
@@ -14,6 +14,10 @@
                 <td>{{ $item['name'] }}</td>
                 <td>
                     <a href="/color/delete/{{ $item['id'] }}" class="btn btn-sm btn-light border text-danger">Delete
+                    </a>
+                </td>
+                <td>
+                    <a href="/color/update/{{ $item['id'] }}" class="btn btn-sm btn-light border text-danger">Edit
                     </a>
                 </td>
             </tr>

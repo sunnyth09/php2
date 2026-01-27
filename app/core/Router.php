@@ -19,7 +19,9 @@ class Router
         $action = $segments[1] ?? 'index';
         var_dump("action" . $action);
         $params = array_slice($segments, 2);
-        var_dump("params" . $params);
+        // var_dump("params" . $params);
+        // var_dump($_POST);
+        // var_dump($_SERVER);
         if (!class_exists($controllerName)) {
             $this->notFound("class not exist");
             return;

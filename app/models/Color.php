@@ -38,7 +38,7 @@ class Color extends Model
         $stmt =  $conn->prepare($sql);
         return $stmt->execute([
             'name' => $data['name'],
-            'id' => $id
+            'id' => (int)$id
         ]);
     }
 

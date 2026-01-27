@@ -21,6 +21,7 @@
             @include('layouts.includes.slidebar')
             <!-- Products -->
             <section class="col-12 col-lg-9">
+                @include('layouts.includes.message')
                 @yield('content')
             </section>
 

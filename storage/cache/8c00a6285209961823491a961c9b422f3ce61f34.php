@@ -16,7 +16,7 @@
         <button type="submit" class="btn btn-success">Sua</button>
     </form>
     <h3>Danh sách biến thể</h3>
-    <!-- tao table html and render data tu ajax --> 
+    <!-- tao table html and render data tu ajax -->
     <button type="submit" class="btn btn-primary mb-3">+</button>
     <form class="row g-2">
         <div class="col-auto">
@@ -29,13 +29,17 @@
             </select>
         </div>
         <div class="col-auto">
-            <label for="inputPassword2" class="visually-hidden">Password</label>
+            <label for="inputPassword2" class="visually-hidden">Kích thước</label>
             <select id="size" class="form-select" aria-label="Default select example">
                 <option selected>chọn kich thuoc</option>
                 <?php $__currentLoopData = $sizes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $size): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($size['id']); ?>"><?php echo e($size['name']); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
+        </div>
+        <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Giá sản phẩm</label>
+            <input type="number" class="form-control" placeholder="nhập giá" name="price" id="price" min="0"/>
         </div>
         <div class="col-auto">
             <input type="number" id="soLuong"class="form-control" placeholder="nhập số lượng" min="0" />
@@ -55,19 +59,18 @@
             const colorId = document.getElementById('color').value;
             const sizeId = document.getElementById('size').value;
             const soLuong = document.getElementById('soLuong').value;
+            const price = document.getElementById('price').value;
             const image = document.getElementById('image').value;
+            const formData = new FormData();
+            formData.append('colorId', colorId);
+            formData.append('sizeId', sizeId);
+            formData.append('price', price);
+            formData.append('quantity', soLuong);
+            formData.append('image', image);
+            formData.append('productId', <?php echo e($product['id']); ?>);
             fetch('/product/add_variant', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    colorId,
-                    sizeId,
-                    productId: <?php echo e($product['id']); ?>,
-                    soLuong,
-                    image
-                })
+                body: formData
             }).then(result => {
                 console.log(result)
             })

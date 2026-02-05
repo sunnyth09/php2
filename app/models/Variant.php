@@ -24,7 +24,7 @@ class Variant extends Model
 
     public function create($data = [])
     {
-        $sql = "insert into $this->table (colorId, sizeId, quantity, image) VALUES (:colorId, :sizeId, :quantity, :image)";
+        $sql = "insert into $this->table (colorId, sizeId, quantity, image, productId) VALUES (:colorId, :sizeId, :quantity, :image, :productId)";
         $conn = $this->connect();
         $stmt =  $conn->prepare($sql);
         return $stmt->execute([
@@ -32,6 +32,7 @@ class Variant extends Model
             'sizeId' => $data['sizeId'],
             'quantity' => $data['quantity'],
             'image' => $data['image'],
+            'productId' => $data['productId']
         ]);
     }
 
@@ -54,5 +55,19 @@ class Variant extends Model
         return $stmt->execute([
             'id' => $id
         ]);
+    }
+    public function KTTonTai($productId, $sizeId, $colorId)
+    {
+        $sql = "select *  FROM `{$this->table}` where productId = :productId and sizeId = :sizeId and colorId = :colorId limit 1";
+        $conn = $this->connect();
+        $stmt =  $conn->prepare($sql);
+        $stmt->execute([
+            'productId' => (int)$productId,
+            'sizeId' => (int)$sizeId,
+            'colorId' => (int)$colorId
+        ]);
+        return  (bool)$stmt->fetchColumn();
+
+        
     }
 }

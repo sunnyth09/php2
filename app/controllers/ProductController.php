@@ -42,7 +42,7 @@ class ProductController extends Controller
                 $this->redirect('/product');
             }
         } else {
-            $this->view("product/add",[]);
+            $this->view("product/add", []);
         }
     }
     public function update($id)
@@ -58,12 +58,12 @@ class ProductController extends Controller
                 'product' => $data,
                 'colors' => $colors,
                 'sizes' => $sizes
-        ]);
+            ]);
         } else {
             $name = trim($_POST['name']);
-            $price =trim($_POST['price']);
-            $image =trim($_POST['image']);
-            $status =trim($_POST['status']);
+            $price = trim($_POST['price']);
+            $image = trim($_POST['image']);
+            $status = trim($_POST['status']);
             if (!empty($name)) {
                 $colorModel = $this->model('product');
                 $isSuccess = $colorModel->update(
@@ -83,7 +83,8 @@ class ProductController extends Controller
         }
     }
 
-    function add_variant(){
+    function add_variant()
+    {
         /**
          *  xử lý method post
          *  kiểm tra trùng, validate 
@@ -93,14 +94,31 @@ class ProductController extends Controller
         header('Content-Type: application/json');
         $variant = $this->model('variant');
 
+        $productId = $_POST['productId'];
+        $sizeId = $_POST['sizeId'];
+        $colorId = $_POST['colorId'];
+        $price = $_POST['price'];
+        $image = $_POST['image'];
+        $quantity = $_POST['quantity'];
+        $tonTai = $variant->KTTonTai($productId, $sizeId, $colorId);
+
         $data = array(
-            'sizeId' => 1,
-            'colorId' => 2,
-            'image' => '',
-            'quantity' => 5
+            'productId' => intval($productId),
+            'sizeId' => intval($sizeId),
+            'colorId' => intval($colorId),
+            'image' => $image,
+            'quantity' => intval($quantity),
+            'price' => (float)$price
         );
-        $variant->create($data);
-        $json_string = json_encode($data);
-        echo $json_string;
+        if ($tonTai) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'da ton tai',
+            ]);
+        } else {
+            $variant->create($data);
+            $json_string = json_encode($data);
+            echo $json_string;
+        }
     }
 }

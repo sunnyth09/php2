@@ -17,7 +17,38 @@
         <button type="submit" class="btn btn-success">Sua</button>
     </form>
     <h3>Danh sách biến thể</h3>
-    <!-- tao table html and render data tu ajax --> 
+      <table class="table">
+        <tr>
+            <th> id </th>
+            <th> name </th>
+            <th> price </th>
+            <th> image </th>
+            <th> status </th>
+            <th>action</th>
+        </tr>
+        @foreach ($products as $item)
+            <tr>
+                <td>{{ $item['id'] }}</td>
+                <td>{{ $item['name'] }}</td>
+                <td>{{ $item['price'] }}</td>
+                <td><img src="{{ $item['image'] }}" alt="" width="100"></td>
+                <td>{{ $item['status'] == 1 ? 'active' : 'disable' }}</td>
+                <td>
+                     <a href="/size/show/{{ $item['id'] }}" class="btn btn-success">View
+                        
+                    </a>
+                    <a href="/product/delete/{{ $item['id'] }}" class="btn btn-danger">Delete
+                        
+                    </a>
+                       <a href="/product/update/{{ $item['id'] }}" class="btn btn-primary">Edit
+                        
+                    </a>
+                </td>
+            </tr>
+        @endforeach
+
+    </table>
+    <!-- tao table html and render data tu ajax -->
     <button type="submit" class="btn btn-primary mb-3">+</button>
     <form class="row g-2">
         <div class="col-auto">
@@ -30,13 +61,17 @@
             </select>
         </div>
         <div class="col-auto">
-            <label for="inputPassword2" class="visually-hidden">Password</label>
+            <label for="inputPassword2" class="visually-hidden">Kích thước</label>
             <select id="size" class="form-select" aria-label="Default select example">
                 <option selected>chọn kich thuoc</option>
                 @foreach ($sizes as $size)
                     <option value="{{ $size['id'] }}">{{ $size['name'] }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Giá sản phẩm</label>
+            <input type="number" class="form-control" placeholder="nhập giá" name="price" id="price" min="0"/>
         </div>
         <div class="col-auto">
             <input type="number" id="soLuong"class="form-control" placeholder="nhập số lượng" min="0" />
@@ -56,21 +91,26 @@
             const colorId = document.getElementById('color').value;
             const sizeId = document.getElementById('size').value;
             const soLuong = document.getElementById('soLuong').value;
+            const price = document.getElementById('price').value;
             const image = document.getElementById('image').value;
+            const formData = new FormData();
+            formData.append('colorId', colorId);
+            formData.append('sizeId', sizeId);
+            formData.append('price', price);
+            formData.append('quantity', soLuong);
+            formData.append('image', image);
+            formData.append('productId', {{$product['id']}});
             fetch('/product/add_variant', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    colorId,
-                    sizeId,
-                    productId: {{ $product['id'] }},
-                    soLuong,
-                    image
-                })
+                body: formData
             }).then(result => {
                 console.log(result)
+                /*
+                b1: check status 
+                error -> alert loi
+                success => c1. reload page danh cho cac ban trung binh
+                kha > => dung javascript them 1 dong vao table ko can load lai page
+                */
             })
 
         })

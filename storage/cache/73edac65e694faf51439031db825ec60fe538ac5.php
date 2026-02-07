@@ -31,4 +31,4 @@
       </div>
     </div>
   </nav>
-<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php2_mvc/app/views/layouts/includes/header.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/html/app/views/layouts/includes/header.blade.php ENDPATH**/ ?>

@@ -18,4 +18,4 @@
 <?php
 unset($_SESSION['success']);
 unset($_SESSION['error']);
-?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php2_mvc/app/views/layouts/includes/message.blade.php ENDPATH**/ ?>
+?><?php /**PATH /var/www/html/app/views/layouts/includes/message.blade.php ENDPATH**/ ?>

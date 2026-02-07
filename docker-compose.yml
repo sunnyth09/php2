@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  php:
+    build: ./php
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8082:80"
+    environment:
+      HOST: mysql_db
+      DATABASE: php2
+      USERNAME: root
+      PASSWORD: 123456
+    networks:
+      - demo1_default
+
+  mysql_db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: php2
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3308:3306"
+    networks:
+      - demo1_default
+    volumes:
+      - db_data:/var/lib/mysql
+
+  dozzle:
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "9990:8080"
+    networks:
+      - demo1_default
+
+volumes:
+  db_data:
+
+networks:
+  demo1_default:
+    external: true

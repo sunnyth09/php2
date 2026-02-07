@@ -13,4 +13,4 @@
         <?php endforeach ;?>
    </body>
 
-</html><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php2_mvc/app/views/home/index.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /var/www/html/app/views/home/index.blade.php ENDPATH**/ ?>

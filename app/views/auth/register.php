@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <?php if (isset($error)): ?>
+        <p style="color: red;"><?php echo $error; ?></p>
+    <?php endif; ?>
+    <form action="/auth/store" method="POST">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <a href="/auth/login">Login</a>
+</body>
+
+</html>

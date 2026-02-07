@@ -18,4 +18,4 @@
 <?php $__env->stopSection(); ?>
  
 
-<?php echo $__env->make('layouts.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php2_mvc/app/views/product/add.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/app/views/product/add.blade.php ENDPATH**/ ?>

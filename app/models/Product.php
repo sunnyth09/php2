@@ -35,7 +35,8 @@ class Product extends Model
         ]);
     }
 
-    public function update($data = [], $id) {
+    public function update($data, $id)
+    {
         $sql = "update $this->table set name = :name, price = :price, image = :image, status = :status where id = :id";
         $conn = $this->connect();
         $stmt =  $conn->prepare($sql);
@@ -48,7 +49,8 @@ class Product extends Model
         ]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $sql = "delete from $this->table where id = :id";
         $conn = $this->connect();
         $stmt =  $conn->prepare($sql);

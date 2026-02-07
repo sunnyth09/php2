@@ -45,4 +45,4 @@
 </body>
 
 </html>
-<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php2_mvc/app/views/layouts/index.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/html/app/views/layouts/index.blade.php ENDPATH**/ ?>

@@ -7,4 +7,4 @@
             <a href="/color" class="list-group-item list-group-item-action">colors</a>
           </div>
         </div>
-      </aside><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/php2_mvc/app/views/layouts/includes/slidebar.blade.php ENDPATH**/ ?>
+      </aside><?php /**PATH /var/www/html/app/views/layouts/includes/slidebar.blade.php ENDPATH**/ ?>
